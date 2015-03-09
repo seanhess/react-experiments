@@ -1,8 +1,8 @@
 module.exports = {
   entry: {
-    //app:  ['webpack/hot/dev-server', './index.js']
-    app:  './src/index.jsx'
+    app:  ['./src/index-react.jsx']
   },
+
   output: {
     path: "build",
     filename: "bundle.js"

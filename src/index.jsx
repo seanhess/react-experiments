@@ -12,8 +12,6 @@ const state = projectile({
     {id: 3, name: "three"}],
 })
 
-
-
 const TodoItem = React.createClass({
   render() {
 
