@@ -3,38 +3,41 @@ const React = window.React = require('react')
 console.log("INDEX REACT")
 
 const TodoItem = React.createClass({
+
+  onChange(e) {
+    this.props.onEdit(this.props.item, e.target.value)
+  },
+
+  onClickDelete() {
+    this.props.onDelete(this.props.item)
+  },
+
   render() {
-    const {item, onEdit, onDelete} = this.props
-
-    function onChange(e) {
-      onEdit(item, e.target.value)
-    }
-
-    function onClickDelete() {
-      onDelete(item)
-    }
+    const {item} = this.props
 
     return <div className="row collapse">
       <div className="small-1 columns">
-        <a className="button prefix" onClick={onClickDelete}>x</a>
+        <a className="button prefix" onClick={this.onClickDelete}>x</a>
       </div>
       <div className="small-11 columns">
-        <input type="text" value={item.text} onChange={onChange}/>
+        <input type="text" value={item.text} onChange={this.onChange}/>
       </div>
     </div>
   }
 })
 
 const TodoList = React.createClass({
-  render() {
-    const {items, onEditItem, onDeleteItem} = this.props
 
-    function renderItem(item) {
-      return <TodoItem item={item} key={item.id} onEdit={onEditItem} onDelete={onDeleteItem}/>
-    }
+  renderItem(item) {
+    const {onEditItem, onDeleteItem} = this.props
+    return <TodoItem item={item} key={item.id} onEdit={onEditItem} onDelete={onDeleteItem}/>
+  },
+
+  render() {
+    const {items} = this.props
 
     return <div>
-      {items.map(renderItem)}
+      {items.map(this.renderItem)}
     </div>
   }
 })
@@ -43,7 +46,6 @@ const TodoApp = React.createClass({
 
   getInitialState() {
     return {
-      nextItemText: "",
       items: [
         {id: 1, text: "write talk"}, 
         {id: 2, text: "think of more todo items"}, 
@@ -51,18 +53,29 @@ const TodoApp = React.createClass({
     }
   },
 
-  addItem() {
-    console.log("ADD ITEM")
+  addItem(text) {
+    const {items} = this.state
+    let newItem = {id: Math.random(), text: text}
+    this.setState({items: items.concat([newItem])})
   },
 
   deleteItem(item) {
-    console.log("DELETE", item)
-    // replace this.state
+    // make a new array excluding this item
+    let newItems = this.state.items.filter(i => i.id != item.id)
+    this.setState({items: newItems})
   },
 
-  editItem(item, value) {
-    console.log("EDIT", item, value)
-    // replace this.state. It's immutable!
+  editItem(editedItem, value) {
+    const {items} = this.state
+
+    let updatedItems = items.map(function(item) {
+      if (item.id == editedItem.id) {
+        item.text = value
+      } 
+      return item
+    })
+
+    this.setState({items: updatedItems})
   },
 
   render() {
@@ -74,7 +87,6 @@ const TodoApp = React.createClass({
       <TodoList items={items} onEditItem={this.editItem} onDeleteItem={this.deleteItem} />
     </div>
   }
-      //<button onClick={onAdd}>Add Item</button>
 })
 
 const TodoInput = React.createClass({
@@ -85,7 +97,8 @@ const TodoInput = React.createClass({
 
   onSubmit(e) {
     e.preventDefault()
-    console.log("CLICK ADD")
+    this.props.onAdd(this.state.newText)
+    this.setState({newText: ""})
   },
 
   onChange(e) {
