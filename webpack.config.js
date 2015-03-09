@@ -1,10 +1,17 @@
+var webpack = require('webpack')
+
 module.exports = {
   entry: {
-    app:  ['./src/index-react.jsx']
+    app:  [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './src/index.jsx',
+    ]
   },
 
   output: {
-    path: "build",
+    publicPath: "/build/",
+    path: __dirname + "/build/",
     filename: "bundle.js"
   },
 
@@ -15,7 +22,15 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.css$/, loader: "style!css" },
-      { test: /\.js(x?)/,   exclude: /node_modules/, loader: "jsx-loader!babel-loader" }
+      { test: /\.js(x?)/, 
+        exclude: /node_modules/, 
+        loaders: ["react-hot", "jsx-loader", "babel-loader"]
+      }
     ]
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };

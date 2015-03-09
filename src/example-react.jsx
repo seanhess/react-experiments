@@ -119,8 +119,4 @@ const TodoInput = React.createClass({
   }
 })
 
-// Put our react app in the DOM
-React.render(
-  <TodoApp/>,
-  document.getElementById('content')
-)
+module.exports = TodoApp

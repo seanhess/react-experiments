@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --devtool eval --hot --progress --colors --content-base build"
+    "dev": "webpack-dev-server --devtool eval --hot --progress --colors --content-base build",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "babel-core": "4.5.1",
     "babel-loader": "4.0.0",
     "jsx-loader": "0.12.2",
+    "react-hot-loader": "1.2.0",
     "webpack": "1.7.2",
     "webpack-dev-server": "1.7.0"
   }
