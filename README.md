@@ -8,8 +8,8 @@ Programmer, Inventor. I like to help people solve problems.
 
 - [Contracting and consulting](https://www.linkedin.com/in/seanhess)
 - Founded [I.TV](http://i.tv)
-- [Projects and Blog](http://seanhess.github.io/)
 - [Kuali.co](http://kuali.co)
+- [Projects and Blog](http://seanhess.github.io/)
 
 Introduction to React
 ---------------------
@@ -192,6 +192,13 @@ More like Om.
     })
 
 They prefer functions to JSX. Consider using [omniscient-tools](https://github.com/kualico/omniscient-tools) instead if you like JSX?
+
+Omniscient + Immutable Demo
+----------------------------
+
+[Launch Demo](http://localhost:3000/)
+
+[Source](./src/example-omniscient.jsx)
 
 Other Links
 -----------
