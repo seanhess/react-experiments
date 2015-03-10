@@ -1,4 +1,4 @@
-var React = require('react')
-var App = require('./example-react')
+// @flow
 
-React.render(<App />, document.body)
+//require('./example-react')
+require('./example-omniscient')

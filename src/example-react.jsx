@@ -1,8 +1,13 @@
-const React = window.React = require('react')
+// @flow
 
-console.log("INDEX REACT")
+type Item = {
+  id: number;
+  text: string;
+}
 
-const TodoItem = React.createClass({
+var React = window.React = require('react')
+
+var TodoItem = React.createClass({
 
   onChange(e) {
     this.props.onEdit(this.props.item, e.target.value)
@@ -13,7 +18,7 @@ const TodoItem = React.createClass({
   },
 
   render() {
-    const {item} = this.props
+    var item:Item = this.props.item
 
     return <div className="row collapse">
       <div className="small-1 columns">
@@ -26,15 +31,15 @@ const TodoItem = React.createClass({
   }
 })
 
-const TodoList = React.createClass({
+var TodoList = React.createClass({
 
   renderItem(item) {
-    const {onEditItem, onDeleteItem} = this.props
+    var {onEditItem, onDeleteItem} = this.props
     return <TodoItem item={item} key={item.id} onEdit={onEditItem} onDelete={onDeleteItem}/>
   },
 
   render() {
-    const {items} = this.props
+    var {items} = this.props
 
     return <div>
       {items.map(this.renderItem)}
@@ -42,7 +47,7 @@ const TodoList = React.createClass({
   }
 })
 
-const TodoApp = React.createClass({
+var TodoApp = React.createClass({
 
   getInitialState() {
     return {
@@ -53,22 +58,22 @@ const TodoApp = React.createClass({
     }
   },
 
-  addItem(text) {
-    const {items} = this.state
-    let newItem = {id: Math.random(), text: text}
+  addItem(text:string) {
+    var {items} = this.state
+    var newItem = {id: Math.random(), text: text}
     this.setState({items: items.concat([newItem])})
   },
 
-  deleteItem(item) {
+  deleteItem(item:Item) {
     // make a new array excluding this item
-    let newItems = this.state.items.filter(i => i.id != item.id)
+    var newItems = this.state.items.filter(i => i.id != item.id)
     this.setState({items: newItems})
   },
 
-  editItem(editedItem, value) {
-    const {items} = this.state
+  editItem(editedItem:Item, value:string) {
+    var {items} = this.state
 
-    let updatedItems = items.map(function(item) {
+    var updatedItems = items.map(function(item) {
       if (item.id == editedItem.id) {
         item.text = value
       } 
@@ -78,18 +83,18 @@ const TodoApp = React.createClass({
     this.setState({items: updatedItems})
   },
 
-  render() {
-    const {items} = this.state
+  render():any {
+    var {items} = this.state
 
     return <div className="row small-12 columns">
-      <h1>Todo</h1>
+      <h1>Todo React</h1>
       <TodoInput onAdd={this.addItem}/>
       <TodoList items={items} onEditItem={this.editItem} onDeleteItem={this.deleteItem} />
     </div>
   }
 })
 
-const TodoInput = React.createClass({
+var TodoInput = React.createClass({
 
   getInitialState() {
     return {newText: ""}
@@ -106,7 +111,7 @@ const TodoInput = React.createClass({
   },
 
   render() {
-    const {newText} = this.state
+    var {newText} = this.state
 
     return <form className="row collapse" onSubmit={this.onSubmit}>
       <div className="small-10 columns">
@@ -119,4 +124,9 @@ const TodoInput = React.createClass({
   }
 })
 
-module.exports = TodoApp
+exports.App = TodoApp
+
+
+
+
+
