@@ -1,6 +1,10 @@
 Functional Frontend with React
 ==============================
 
+These slides are online!
+
+## https://github.com/seanhess/react-experiments
+
 About Me
 --------
 
@@ -10,6 +14,7 @@ Programmer, Inventor. I like to help people solve problems.
 - Founded [I.TV](http://i.tv)
 - [Kuali.co](http://kuali.co)
 - [Projects and Blog](http://seanhess.github.io/)
+- [@seanhess](https://twitter.com/seanhess)
 
 Introduction to React
 ---------------------

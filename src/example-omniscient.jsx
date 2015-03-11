@@ -65,7 +65,7 @@ var TodoApp = component(function({cursor}) {
   }
 
   return <div className="row small-12 columns">
-    <h1>Todo Omniscient</h1>
+    <h1>Todo</h1>
     <TodoInput onAdd={addTodo} newText={newText}/>
     <TodoList todos={todos} />
     <div><pre>{JSON.stringify(cursor.toJS(), null, " ")}</pre></div>

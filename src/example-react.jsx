@@ -87,7 +87,7 @@ var TodoApp = React.createClass({
     var {items} = this.state
 
     return <div className="row small-12 columns">
-      <h1>Todo React</h1>
+      <h1>Todo</h1>
       <TodoInput onAdd={this.addItem}/>
       <TodoList items={items} onEditItem={this.editItem} onDeleteItem={this.deleteItem} />
     </div>
@@ -124,9 +124,8 @@ var TodoInput = React.createClass({
   }
 })
 
-exports.App = TodoApp
+function render() {
+  React.render(<TodoApp/>, document.body)
+}
 
-
-
-
-
+render()
