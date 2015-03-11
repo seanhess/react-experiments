@@ -8,7 +8,7 @@ These slides are online!
 About Me
 --------
 
-Programmer, Inventor. I like to help people solve problems.
+Programmer, Inventor. I like to solve problems.
 
 - [Contracting and consulting](https://www.linkedin.com/in/seanhess)
 - Founded [I.TV](http://i.tv)
@@ -100,6 +100,8 @@ React: The Virtual DOM
 ----------------------
 
 Diffs the properties of each component to see if it needs to redraw. Performance.
+
+Pretend you are just recreating static HTML every time anything changes. 
 
 React: Todo Example
 -------------------
@@ -207,6 +209,8 @@ Omniscient + Immutable Demo
 
 Other Links
 -----------
+
+[React 1.3 released](http://facebook.github.io/react/blog/2015/03/10/react-v0.13.html)! Support for es6 classes.
 
 Hot module reloading
 
