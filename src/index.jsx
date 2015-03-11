@@ -1,4 +1,4 @@
 // @flow
 
-require('./example-react')
-// require('./example-omniscient')
+//require('./example-react')
+require('./example-omniscient')
